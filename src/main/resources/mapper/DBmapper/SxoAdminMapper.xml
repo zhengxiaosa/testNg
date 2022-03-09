@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Test.model.DBmodel.SxoAdminMapper" >
+  <resultMap id="BaseResultMap" type="com.Test.model.DBmodel.SxoAdmin" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="CHAR" />
+    <result column="login_pwd" property="loginPwd" jdbcType="CHAR" />
+    <result column="login_salt" property="loginSalt" jdbcType="CHAR" />
+    <result column="mobile" property="mobile" jdbcType="CHAR" />
+    <result column="email" property="email" jdbcType="CHAR" />
+    <result column="gender" property="gender" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="login_total" property="loginTotal" jdbcType="INTEGER" />
+    <result column="login_time" property="loginTime" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="add_time" property="addTime" jdbcType="INTEGER" />
+    <result column="upd_time" property="updTime" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, username, login_pwd, login_salt, mobile, email, gender, status, login_total, 
+    login_time, role_id, add_time, upd_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.Test.model.DBmodel.SxoAdminExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sxo_admin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.Test.model.DBmodel.SxoAdminExample" >
+    delete from sxo_admin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.Test.model.DBmodel.SxoAdmin" >
+    insert into sxo_admin (id, username, login_pwd, 
+      login_salt, mobile, email, gender, 
+      status, login_total, login_time, 
+      role_id, add_time, upd_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=CHAR}, #{loginPwd,jdbcType=CHAR}, 
+      #{loginSalt,jdbcType=CHAR}, #{mobile,jdbcType=CHAR}, #{email,jdbcType=CHAR}, #{gender,jdbcType=TINYINT}, 
+      #{status,jdbcType=TINYINT}, #{loginTotal,jdbcType=INTEGER}, #{loginTime,jdbcType=INTEGER}, 
+      #{roleId,jdbcType=INTEGER}, #{addTime,jdbcType=INTEGER}, #{updTime,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.Test.model.DBmodel.SxoAdmin" >
+    insert into sxo_admin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="loginPwd != null" >
+        login_pwd,
+      </if>
+      <if test="loginSalt != null" >
+        login_salt,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="loginTotal != null" >
+        login_total,
+      </if>
+      <if test="loginTime != null" >
+        login_time,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="updTime != null" >
+        upd_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=CHAR},
+      </if>
+      <if test="loginPwd != null" >
+        #{loginPwd,jdbcType=CHAR},
+      </if>
+      <if test="loginSalt != null" >
+        #{loginSalt,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=CHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="loginTotal != null" >
+        #{loginTotal,jdbcType=INTEGER},
+      </if>
+      <if test="loginTime != null" >
+        #{loginTime,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=INTEGER},
+      </if>
+      <if test="updTime != null" >
+        #{updTime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.Test.model.DBmodel.SxoAdminExample" resultType="java.lang.Integer" >
+    select count(*) from sxo_admin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sxo_admin
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.username != null" >
+        username = #{record.username,jdbcType=CHAR},
+      </if>
+      <if test="record.loginPwd != null" >
+        login_pwd = #{record.loginPwd,jdbcType=CHAR},
+      </if>
+      <if test="record.loginSalt != null" >
+        login_salt = #{record.loginSalt,jdbcType=CHAR},
+      </if>
+      <if test="record.mobile != null" >
+        mobile = #{record.mobile,jdbcType=CHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=CHAR},
+      </if>
+      <if test="record.gender != null" >
+        gender = #{record.gender,jdbcType=TINYINT},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=TINYINT},
+      </if>
+      <if test="record.loginTotal != null" >
+        login_total = #{record.loginTotal,jdbcType=INTEGER},
+      </if>
+      <if test="record.loginTime != null" >
+        login_time = #{record.loginTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.roleId != null" >
+        role_id = #{record.roleId,jdbcType=INTEGER},
+      </if>
+      <if test="record.addTime != null" >
+        add_time = #{record.addTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.updTime != null" >
+        upd_time = #{record.updTime,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sxo_admin
+    set id = #{record.id,jdbcType=INTEGER},
+      username = #{record.username,jdbcType=CHAR},
+      login_pwd = #{record.loginPwd,jdbcType=CHAR},
+      login_salt = #{record.loginSalt,jdbcType=CHAR},
+      mobile = #{record.mobile,jdbcType=CHAR},
+      email = #{record.email,jdbcType=CHAR},
+      gender = #{record.gender,jdbcType=TINYINT},
+      status = #{record.status,jdbcType=TINYINT},
+      login_total = #{record.loginTotal,jdbcType=INTEGER},
+      login_time = #{record.loginTime,jdbcType=INTEGER},
+      role_id = #{record.roleId,jdbcType=INTEGER},
+      add_time = #{record.addTime,jdbcType=INTEGER},
+      upd_time = #{record.updTime,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

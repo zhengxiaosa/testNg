@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.Test.model.DBmodel.SxoAnswerMapper" >
+  <resultMap id="BaseResultMap" type="com.Test.model.DBmodel.SxoAnswer" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="CHAR" />
+    <result column="tel" property="tel" jdbcType="CHAR" />
+    <result column="title" property="title" jdbcType="CHAR" />
+    <result column="is_reply" property="isReply" jdbcType="TINYINT" />
+    <result column="reply_time" property="replyTime" jdbcType="INTEGER" />
+    <result column="is_show" property="isShow" jdbcType="TINYINT" />
+    <result column="access_count" property="accessCount" jdbcType="INTEGER" />
+    <result column="add_time" property="addTime" jdbcType="INTEGER" />
+    <result column="upd_time" property="updTime" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.Test.model.DBmodel.SxoAnswerWithBLOBs" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+    <result column="reply" property="reply" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, user_id, name, tel, title, is_reply, reply_time, is_show, access_count, add_time, 
+    upd_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    content, reply
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.Test.model.DBmodel.SxoAnswerExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sxo_answer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.Test.model.DBmodel.SxoAnswerExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sxo_answer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.Test.model.DBmodel.SxoAnswerExample" >
+    delete from sxo_answer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.Test.model.DBmodel.SxoAnswerWithBLOBs" >
+    insert into sxo_answer (id, user_id, name, 
+      tel, title, is_reply, reply_time, 
+      is_show, access_count, add_time, 
+      upd_time, content, reply
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{name,jdbcType=CHAR}, 
+      #{tel,jdbcType=CHAR}, #{title,jdbcType=CHAR}, #{isReply,jdbcType=TINYINT}, #{replyTime,jdbcType=INTEGER}, 
+      #{isShow,jdbcType=TINYINT}, #{accessCount,jdbcType=INTEGER}, #{addTime,jdbcType=INTEGER}, 
+      #{updTime,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}, #{reply,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.Test.model.DBmodel.SxoAnswerWithBLOBs" >
+    insert into sxo_answer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="isReply != null" >
+        is_reply,
+      </if>
+      <if test="replyTime != null" >
+        reply_time,
+      </if>
+      <if test="isShow != null" >
+        is_show,
+      </if>
+      <if test="accessCount != null" >
+        access_count,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="updTime != null" >
+        upd_time,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="reply != null" >
+        reply,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=CHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=CHAR},
+      </if>
+      <if test="isReply != null" >
+        #{isReply,jdbcType=TINYINT},
+      </if>
+      <if test="replyTime != null" >
+        #{replyTime,jdbcType=INTEGER},
+      </if>
+      <if test="isShow != null" >
+        #{isShow,jdbcType=TINYINT},
+      </if>
+      <if test="accessCount != null" >
+        #{accessCount,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=INTEGER},
+      </if>
+      <if test="updTime != null" >
+        #{updTime,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="reply != null" >
+        #{reply,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.Test.model.DBmodel.SxoAnswerExample" resultType="java.lang.Integer" >
+    select count(*) from sxo_answer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sxo_answer
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=CHAR},
+      </if>
+      <if test="record.tel != null" >
+        tel = #{record.tel,jdbcType=CHAR},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=CHAR},
+      </if>
+      <if test="record.isReply != null" >
+        is_reply = #{record.isReply,jdbcType=TINYINT},
+      </if>
+      <if test="record.replyTime != null" >
+        reply_time = #{record.replyTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.isShow != null" >
+        is_show = #{record.isShow,jdbcType=TINYINT},
+      </if>
+      <if test="record.accessCount != null" >
+        access_count = #{record.accessCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.addTime != null" >
+        add_time = #{record.addTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.updTime != null" >
+        upd_time = #{record.updTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.reply != null" >
+        reply = #{record.reply,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update sxo_answer
+    set id = #{record.id,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=CHAR},
+      tel = #{record.tel,jdbcType=CHAR},
+      title = #{record.title,jdbcType=CHAR},
+      is_reply = #{record.isReply,jdbcType=TINYINT},
+      reply_time = #{record.replyTime,jdbcType=INTEGER},
+      is_show = #{record.isShow,jdbcType=TINYINT},
+      access_count = #{record.accessCount,jdbcType=INTEGER},
+      add_time = #{record.addTime,jdbcType=INTEGER},
+      upd_time = #{record.updTime,jdbcType=INTEGER},
+      content = #{record.content,jdbcType=LONGVARCHAR},
+      reply = #{record.reply,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sxo_answer
+    set id = #{record.id,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=CHAR},
+      tel = #{record.tel,jdbcType=CHAR},
+      title = #{record.title,jdbcType=CHAR},
+      is_reply = #{record.isReply,jdbcType=TINYINT},
+      reply_time = #{record.replyTime,jdbcType=INTEGER},
+      is_show = #{record.isShow,jdbcType=TINYINT},
+      access_count = #{record.accessCount,jdbcType=INTEGER},
+      add_time = #{record.addTime,jdbcType=INTEGER},
+      upd_time = #{record.updTime,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

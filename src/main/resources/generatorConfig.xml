@@ -8,6 +8,7 @@
     <classPathEntry location="C:\Users\issuser\.m2\repository\mysql\mysql-connector-java\8.0.16\mysql-connector-java-8.0.16.jar" />
 
     <context id="wangyongzhi_mysql_tables" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
         <!-- 防止生成的代码中有很多注释，加入下面的配置控制 -->
         <commentGenerator>
             <property name="suppressAllComments" value="true" />
@@ -16,9 +17,9 @@
 
         <!-- 数据库连接 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://47.56.133.88:3306/dlzh_000000"
-                        userId="test"
-                        password="test">
+                        connectionURL="jdbc:mysql://8.131.74.83/www_zhengxiaosa"
+                        userId="www_zhengxiaosa"
+                        password="123456">
         </jdbcConnection>
 
         <javaTypeResolver >
@@ -42,7 +43,7 @@
         </javaClientGenerator>
 
         <!-- 数据表进行生成操作 schema:相当于库名; tableName:表名; domainObjectName:对应的DO -->
-        <table schema="dlzh_000000" tableName="%"></table>
+        <table schema="www_zhengxiaosa" tableName="sxo_answer"></table>
 
     </context>
 </generatorConfiguration>
