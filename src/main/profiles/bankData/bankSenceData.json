@@ -1,0 +1,48 @@
+[
+  {
+    "comments": "银行场景",
+    "request": {
+      "add": {
+        "bankAlias": "999",
+        "enBankAlias": "AUTOTEST",
+        "enName": "AUTOTEST",
+        "id": 0,
+        "lineBankPart": "999",
+        "name": "AUTOTEST",
+        "onOff": "AUTOTEST",
+        "swiftBankPart": "AUTOTEST",
+        "swiftCountryPart": "AUTOTEST",
+        "type": 0
+      },
+      "update":{
+        "bankAlias": "999",
+        "enBankAlias": "AUTOTEST",
+        "enName": "AUTOTEST",
+        "lineBankPart": "999",
+        "name": "AUTOTEST",
+        "onOff": "AUTOTEST",
+        "swiftBankPart": "AUTOTEST",
+        "swiftCountryPart": "AUTOTEST",
+        "type": 0
+      },
+      "onOff": {
+        "onOff": "Y"
+      }
+    },
+    "expResult": {
+      "add": {
+        "code": 0,
+        "message": "OK"
+      },
+      "update": {
+        "code": 0,
+        "message": "OK"
+      },
+      "onOff": {
+        "code": 0,
+        "message": "OK",
+        "result": true
+      }
+    }
+  }
+]

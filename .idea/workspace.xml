@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3981a257-5d3a-4f4b-b980-423b59b0fddb" name="Default Changelist" comment="独立自主">
-      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
+    <list default="true" id="3981a257-5d3a-4f4b-b980-423b59b0fddb" name="Default Changelist" comment="新增数据库操作">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mine/api/utils/DataProviderUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mine/api/utils/GsonUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/profiles/bankData/bankSenceData.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/test/java/bank/CloneBudgetAppTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +20,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
         <option value="Tag Library Descriptor" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -178,25 +180,29 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566012593864" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../is-mdata-admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/profiles" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.other" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.mine.api.utils" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\issuser\Desktop\apitest\src\main\profiles" />
+      <recent name="C:\Users\issuser\Desktop\apitest\src\main\test\cases" />
       <recent name="$PROJECT_DIR$/src/main/java/com/mine/api/config" />
       <recent name="$PROJECT_DIR$/src/main/java/com/mine/api/utils" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/mine/api" />
-      <recent name="$PROJECT_DIR$/src/main/java" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="bank" />
+      <recent name="com.mine.api.utils" />
     </key>
   </component>
   <component name="RunManager" selected="TestNG.AddUser">
@@ -319,6 +325,7 @@
       <workItem from="1566003783688" duration="3964000" />
       <workItem from="1646735051433" duration="1383000" />
       <workItem from="1646736492944" duration="1306000" />
+      <workItem from="1646815875426" duration="2316000" />
     </task>
     <task id="LOCAL-00001" summary="独立自主">
       <created>1646736231341</created>
