@@ -2,14 +2,12 @@ package com.mine.api.cases;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.google.gson.JsonObject;
 import com.mine.api.entity.AddUserCases;
 import com.mine.api.entity.User;
 import com.mine.api.mapper.AddUserCasesMapper;
 import com.mine.api.mapper.UserMapper;
-import com.mine.api.utils.Json;
-import com.mine.api.utils.MybatisUtils;
-import com.mine.api.utils.PropertiesUtils;
-import com.mine.api.utils.RequestUtils;
+import com.mine.api.utils.*;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.apache.ibatis.session.SqlSession;
@@ -25,8 +23,14 @@ public class AddUser {
         url=PropertiesUtils.getValue("test.url")+PropertiesUtils.getValue("addUser.uri");
     }
 
-    @Test(groups = "addUserTrue",description = "成功添加用户")
-    public void test1(){
+    @DataProvider
+    public Object[][] getTestData() {
+        return DataProviderUtil.getTestData("/bankData/bankSenceData.json");
+    }
+
+
+    @Test(dataProvider = "getTestData", description = "创建预算类型")
+    public void test1(String comments, JsonObject request, JsonObject extResult)  throws Exception{
         //获取测试数据
         User userCase=getUserFromCase(1L);
         String userJson= JSONObject.toJSON(userCase).toString();
@@ -44,6 +48,7 @@ public class AddUser {
         String name = userCase.getName();
         Object user = getUserFromUser(name);
         Assert.assertNotNull(user);
+//        Assert.assertTrue(responseData.getBody().contains(preResult));
 
     }
     @Test(groups = "addUserFalse",description = "用户姓名为空时不能添加用户")
